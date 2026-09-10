@@ -1,4 +1,4 @@
-const TOKEN_KEY = "expensemind_token";
+const TOKEN_KEY = "finova_token";
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);

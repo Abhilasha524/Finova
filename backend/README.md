@@ -1,6 +1,6 @@
-# ExpenseMind AI
+# Finova
 
-ExpenseMind AI is a personal finance management application that combines
+Finova is a personal finance management application that combines
 transaction analytics, machine learning, forecasting, anomaly detection,
 financial goals, behavioural analysis, chatbot assistance, and personalized
 saving recommendations.

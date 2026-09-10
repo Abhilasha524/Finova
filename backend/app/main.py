@@ -7,7 +7,7 @@ from app.routers import analytics, anomalies, auth, categorize, forecast, transa
 # use Alembic migrations once the schema stabilizes.
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title="ExpenseMind AI", version="0.1.0")
+app = FastAPI(title="Finova", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
