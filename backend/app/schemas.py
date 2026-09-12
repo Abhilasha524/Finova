@@ -46,7 +46,7 @@ class UploadSummary(BaseModel):
     duplicates_skipped: int
     rows_skipped: int
     skipped_reasons: list[str]
-    duplicate_reasons: list[str]
+    duplicate_reasons: list[str] = []
 
 class CategoryBreakdown(BaseModel):
     category: str
