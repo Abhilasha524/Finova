@@ -37,6 +37,8 @@ class TransactionOut(BaseModel):
     class Config:
         from_attributes = True
 
+class TransactionCategoryUpdate(BaseModel):
+    category: str
 
 class UploadSummary(BaseModel):
     rows_received: int

@@ -5,6 +5,7 @@ from pydantic import BaseModel
 
 from app.auth import get_current_user
 from app.ml.predict import predict_category
+from app.ml.merchant_rules import get_rule_category
 from app.models import User
 
 router = APIRouter(prefix="/categorize", tags=["categorization"])
@@ -29,7 +30,16 @@ def categorize(
         raise HTTPException(status_code=400, detail="description cannot be empty")
 
     try:
-        result = predict_category(payload.description)
+        rule_category = get_rule_category(payload.description)
+
+        if rule_category:
+            result = {
+        "predicted_category": rule_category,
+        "confidence": 1.0,
+        "model_used": "Merchant Rule"
+    }
+        else:
+            result = predict_category(payload.description)
     except FileNotFoundError as e:
         # Model hasn't been trained yet - this is a clear, actionable error,
         # not a silent 500 crash.

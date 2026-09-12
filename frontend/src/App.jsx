@@ -11,16 +11,15 @@ import Forecast from "./pages/Forecast";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NavBar from "./components/NavBar";
 import Persona from "./pages/persona";
+import Onboarding from "./pages/Onboarding";
 
 function App() {
   return (
     <>
       <NavBar />
-
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-
         <Route
           path="/"
           element={
@@ -29,7 +28,14 @@ function App() {
             </ProtectedRoute>
           }
         />
-
+        <Route
+          path="/onboarding"
+          element={
+            <ProtectedRoute>
+              <Onboarding />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/transactions"
           element={
@@ -38,7 +44,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/anomalies"
           element={
@@ -47,7 +52,6 @@ function App() {
             </ProtectedRoute>
           }
         />
-
         <Route
           path="/forecast"
           element={

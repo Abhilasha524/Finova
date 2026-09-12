@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   BarChart,
@@ -40,9 +41,12 @@ const PIE_COLORS = [
 ];
 
 function Dashboard() {
+  const navigate = useNavigate();
+
   const [summary, setSummary] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  
 
   useEffect(() => {
     async function loadSummary() {
@@ -123,7 +127,7 @@ function Dashboard() {
     return null;
   }
 
-  if (
+   if (
     summary.total_income === 0 &&
     summary.total_expense === 0 &&
     summary.total_transfer_out === 0
@@ -133,30 +137,137 @@ function Dashboard() {
         style={{
           padding: "3rem 2rem",
           fontFamily: "sans-serif",
-          maxWidth: 1200,
+          maxWidth: 900,
           margin: "0 auto",
-          textAlign: "center",
         }}
       >
-        <h1 style={{ marginBottom: "1rem" }}>
-          Financial Dashboard
-        </h1>
-
         <div
           style={{
             border: "1px solid #ddd",
-            borderRadius: 12,
-            padding: "2rem",
+            borderRadius: 14,
+            padding: "3rem 2.5rem",
+            textAlign: "center",
           }}
         >
-          <h3>No transaction data available.</h3>
-          <p>
-            Upload a transactions CSV to see your financial dashboard.
+          <h1
+            style={{
+              marginTop: 0,
+              marginBottom: "0.75rem",
+            }}
+          >
+            Welcome to Finova
+          </h1>
+
+          <p
+            style={{
+              maxWidth: 650,
+              margin: "0 auto 2rem",
+              lineHeight: 1.6,
+              opacity: 0.75,
+            }}
+          >
+            Your financial dashboard is ready. Upload your
+            transaction statement to let Finova analyze your
+            spending, income, savings and financial behaviour.
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(180px, 1fr))",
+              gap: "1rem",
+              marginBottom: "2rem",
+              textAlign: "left",
+            }}
+          >
+            <div
+              style={{
+                border: "1px solid #eee",
+                borderRadius: 10,
+                padding: "1rem",
+              }}
+            >
+              <strong>Upload</strong>
+              <p
+                style={{
+                  margin: "0.5rem 0 0",
+                  opacity: 0.7,
+                  fontSize: "0.9rem",
+                }}
+              >
+                Import your transaction CSV.
+              </p>
+            </div>
+
+            <div
+              style={{
+                border: "1px solid #eee",
+                borderRadius: 10,
+                padding: "1rem",
+              }}
+            >
+              <strong>Understand</strong>
+              <p
+                style={{
+                  margin: "0.5rem 0 0",
+                  opacity: 0.7,
+                  fontSize: "0.9rem",
+                }}
+              >
+                Explore spending patterns and trends.
+              </p>
+            </div>
+
+            <div
+              style={{
+                border: "1px solid #eee",
+                borderRadius: 10,
+                padding: "1rem",
+              }}
+            >
+              <strong>Improve</strong>
+              <p
+                style={{
+                  margin: "0.5rem 0 0",
+                  opacity: 0.7,
+                  fontSize: "0.9rem",
+                }}
+              >
+                Get forecasts, goals and recommendations.
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => navigate("/transactions")}
+            style={{
+              padding: "0.75rem 1.5rem",
+              border: "none",
+              borderRadius: 8,
+              background: "#324635",
+              color: "white",
+              fontSize: "1rem",
+              cursor: "pointer",
+            }}
+          >
+            Upload Transaction Statement
+          </button>
+
+          <p
+            style={{
+              marginTop: "1rem",
+              marginBottom: 0,
+              fontSize: "0.85rem",
+              opacity: 0.6,
+            }}
+          >
+            Finova currently supports CSV statement uploads.
           </p>
         </div>
       </div>
     );
-  }
+  } 
 
   const flowData = [
     {
